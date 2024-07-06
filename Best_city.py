@@ -362,7 +362,7 @@ elif page == "Environment":
         st.write('')
             
         # Entrada de texto para que el usuario ingrese el nombre del país
-        city_name = st.text_input('Check if a specific city was evaluated:', '')
+        city_name = st.text_input('Check the AQI for a specific city:', '')
 
         # Estilos CSS para el botón y el input
         st.markdown("""<style>.st-0 {
