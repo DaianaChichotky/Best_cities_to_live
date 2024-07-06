@@ -4,7 +4,7 @@
 
 ## Introduction
 
-In an increasingly interconnected world, choosing the best city to live in involves a multifaceted decision-making process. Individuals and families consider various factors such as air quality, water availability, educational success, safety, cleanliness, recreational activities, and infrastructure when determining the most suitable place to settle. This project aims to analyze and compare these factors across different cities to identify which ones offer the highest quality of life.
+In an increasingly interconnected world, choosing the best city to live involves a multifaceted decision-making process. Individuals and families consider various factors such as air quality, water availability, educational success, safety, cleanliness, recreational activities, and infrastructure when determining the most suitable place to settle. This project aims to analyze and compare these factors across different cities to identify which ones offer the highest quality of life.
 
 ## Project Objectives
 
@@ -25,7 +25,7 @@ The primary objective of this project is to perform a comprehensive data analysi
 
 ## Data Collection
 
-To achieve these objectives, data will be collected from Kaggle, which is collecting the data from various reputable sources:
+To achieve these objectives, data was collected from Kaggle, which collected the data from various reputable sources:
 - World Air Quality Index (WAQI)
 - World Health Organization (WHO)
 - Numbeo and UNODC
@@ -33,14 +33,12 @@ To achieve these objectives, data will be collected from Kaggle, which is collec
 ## The analysis included:
 
 - **Data preprocessing:** Transformation of columns, handling missing values, and outliers.
-- **Exploratory Data Analysis (EDA):** Including the visualization of interactive maps using the folium and geopandas libraries.
-- **Implementation of machine learning models (regression models)** to predict the prices of the listings.
+- **Exploratory Data Analysis (EDA):** Including the visualization of interactive maps.
+- **Implementation of K-Nearest Neighbours** to find the best cities according to the user's preferences.
 
-I developed an interactive application using Streamlit, which allows users to explore and analyze Airbnb rental data in the city of Montreal. This tool provides a detailed view of various aspects such as prices, availability, and property features, among others.
+I developed an interactive application using Streamlit, which allows users to explore and analyze the best cities to live.
 
 🔗 Link to the application: [Best_cities.streamlit.app](insertar el link) 
-
-This project allowed me to apply and consolidate my skills in Python, data analysis, and data visualization, as well as learn how to use tools like Streamlit to create interactive web applications.
 
 <insertar video>
 
