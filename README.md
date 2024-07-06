@@ -40,7 +40,7 @@ I developed an interactive application using Streamlit, which allows users to ex
 
 🔗 Link to the application: [Best_cities.streamlit.app](insertar el link) 
 
-<img src="best_cities_to_live.webm" alt="Texto alternativo" autoplay>
+<img src="video_descriptive.gif" alt="Video of the app" autoplay>
 
 
 
