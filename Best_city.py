@@ -693,11 +693,16 @@ elif page == "City Rating":
     with col1:
 
         variables = ['Education', 'Cost of Living', 'Safety', 'Tolerance']
-    
         for variable in variables:
             if not filtered_df.empty:
-                fig = px.bar(filtered_df, x='City', y=variable, color='City', title=f'{variable}')
-                fig.update_layout(xaxis=dict(showgrid=False), yaxis=dict(showgrid=False))
+                fig = px.bar(filtered_df,
+                             x='City',
+                             y=variable,
+                             color='City',
+                             title=f'{variable}')
+                fig.update_layout(xaxis=dict(showgrid=False),
+                                  yaxis=dict(showgrid=False),
+                                  width=500)
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
@@ -705,11 +710,16 @@ elif page == "City Rating":
     with col2:
 
         variables = ['Healthcare', 'Leisure & Culture', 'Outdoors', 'Travel Connectivity']
-    
         for variable in variables:
             if not filtered_df.empty:
-                fig = px.bar(filtered_df, x='City', y=variable, color='City', title=f'{variable}')
-                fig.update_layout(xaxis=dict(showgrid=False), yaxis=dict(showgrid=False))
+                fig = px.bar(filtered_df,
+                             x='City',
+                             y=variable,
+                             color='City',
+                             title=f'{variable}')
+                fig.update_layout(xaxis=dict(showgrid=False),
+                                  yaxis=dict(showgrid=False),
+                                  width=500)
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
