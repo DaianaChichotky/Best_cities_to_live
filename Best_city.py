@@ -83,7 +83,7 @@ def add_bg_from_local(image_file, position):
         unsafe_allow_html=True
     )
 
-add_bg_from_local(r"img\img_2.png", position="top")
+add_bg_from_local("img/img_2.png", position="top")
  
 # ----------------------TITLE-----------------------------------------------#
 
