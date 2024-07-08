@@ -239,14 +239,14 @@ elif page == "Top10":
                 st.write('***Cities under the analysis***')             
                 with open('HTML/cities_per_continent.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
-                    st.components.v1.html(html_content, height=600)
+                    st.components.v1.html(html_content, height=500)
             
 
             with col2:
                 st.markdown('***You can zoom in/out and move it around:***')
                 with open('HTML/cities_worldmap.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
-                    st.components.v1.html(html_content, height=600)
+                    st.components.v1.html(html_content, height=500)
 
             st.write('----')
 
