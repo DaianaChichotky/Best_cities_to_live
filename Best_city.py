@@ -702,7 +702,7 @@ elif page == "City Rating":
                              title=f'{variable}')
                 fig.update_layout(xaxis=dict(showgrid=False),
                                   yaxis=dict(showgrid=False),
-                                  width=500)
+                                  width=600)
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
@@ -719,7 +719,7 @@ elif page == "City Rating":
                              title=f'{variable}')
                 fig.update_layout(xaxis=dict(showgrid=False),
                                   yaxis=dict(showgrid=False),
-                                  width=500)
+                                  width=600)
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
@@ -755,15 +755,20 @@ elif page == "Country Evolution":
     
         for variable in variables:
             if not filtered_df.empty:
-                fig = px.line(filtered_df, x='year', y=variable, color='Country', 
-                          title=f'Evolution of {variable} by Year')
+                fig = px.line(filtered_df,
+                              x='year',
+                              y=variable,
+                              color='Country',
+                              title=f'Evolution of {variable} by Year')
                           
                 fig.update_layout(
                     xaxis=dict(
                         tickmode='linear',
                         dtick=1,  # Asegura que cada año esté etiquetado
                         showgrid=False),
-                        yaxis=dict(showgrid=False))
+                        yaxis=dict(showgrid=False),
+                        width=600)
+                
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
@@ -781,7 +786,8 @@ elif page == "Country Evolution":
                         tickmode='linear',
                         dtick=1,  # Asegura que cada año esté etiquetado
                         showgrid=False),
-                        yaxis=dict(showgrid=False))
+                        yaxis=dict(showgrid=False),
+                        width=600)
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
