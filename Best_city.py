@@ -151,10 +151,8 @@ if page == "Introduction":
     st.markdown("""
             <p style='font-size:20px; color:black; text-align: justify;'>
             These and more questions come to our minds when searching for the perfect place to live.
-            Factors such as quality of life, safety, economy, and environmental surroundings play crucial roles.
-            As we explore various cities around the world, understanding how these variables impact our daily lives and overall quality of life is essential.
             This analysis focuses on evaluating multiple key aspects that influence the decision to choose a place to live, using data from diverse global cities.
-            From safety to air quality, and from business freedom to cultural accessibility, each factor uniquely contributes to the perception and experience of a city as a residential destination.
+            From safety to air quality, and from business freedom to cultural accessibility, each factor uniquely contributes to the perception of a city as a residential destination.
             </p>
             """,
             unsafe_allow_html=True)
