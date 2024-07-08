@@ -60,8 +60,8 @@ def change_opacity(input_image_path, output_image_path, opacity):
     
     img.save(output_image_path, "PNG")
 
-input_image_path = "Modulo_3\Proyecto_Final\img\img.png"
-output_image_path = "Modulo_3\Proyecto_Final\img\img_2.png"
+input_image_path = "img\img.png"
+output_image_path = "img\img_2.png"
 opacity = 0.3  # 50% de opacidad
 
 change_opacity(input_image_path, output_image_path, opacity)
@@ -83,11 +83,11 @@ def add_bg_from_local(image_file, position):
         unsafe_allow_html=True
     )
 
-add_bg_from_local(r"Modulo_3\Proyecto_Final\img\img_2.png", position="top")
+add_bg_from_local(r"img\img_2.png", position="top")
  
 # ----------------------TITLE-----------------------------------------------#
 
-logo = 'Modulo_3/Proyecto_Final/img/mapa_logo.png'
+logo = 'img/mapa_logo.png'
 
 st.markdown(
     f"""
@@ -115,9 +115,9 @@ page = option_menu(None,
 
 # --------------------DATA LOADING-----------------------------------------------#
 
-city_df = pd.read_csv("Modulo_3/Proyecto_Final/clean_data/city_df.csv")
-city_world_AQI = pd.read_csv("Modulo_3/Proyecto_Final/clean_data/city_world_AQI.csv")
-countries_df = pd.read_csv("Modulo_3/Proyecto_Final/clean_data/countries_df.csv")
+city_df = pd.read_csv("clean_data/city_df.csv")
+city_world_AQI = pd.read_csv("clean_data/city_world_AQI.csv")
+countries_df = pd.read_csv("clean_data/countries_df.csv")
 
 ####################################  PAGE 1  ######################################
 
@@ -237,14 +237,14 @@ elif page == "Top10":
 
             with col1:
                 st.write('***Cities under the analysis***')             
-                with open('Modulo_3/Proyecto_Final/HTML/cities_per_continent.html', 'r', encoding='utf-8') as f:
+                with open('HTML/cities_per_continent.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
                     st.components.v1.html(html_content, height=600)
             
 
             with col2:
                 st.markdown('***You can zoom in/out and move it around:***')
-                with open('Modulo_3/Proyecto_Final/HTML/cities_worldmap.html', 'r', encoding='utf-8') as f:
+                with open('HTML/cities_worldmap.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
                     st.components.v1.html(html_content, height=600)
 
@@ -290,6 +290,9 @@ elif page == "Top10":
                 # Verificar si la ciudad está en el dataset
                 if check_city_exists(city_name):
                     st.success(f"The city '{city_name}' is part of the evaluated cities \U00002714")
+                    city_data = city_df[city_df['City_lower'] == city_name.strip().lower()]
+                    st.dataframe(city_data.drop(columns=['City_lower', 'lat', 'lng', 'AQI Value', 'Internet Access', 'Venture Capital', 'Taxation']).reset_index(drop=True))
+                    st.write('**The range is from 0 to 10, with the larger numbers indicating higher desirability to live.**')
                 elif city_name:
                     st.warning(f"The city '{city_name}' is NOT part of the analysis.")
 
@@ -302,19 +305,19 @@ elif page == "Top10":
 
             with col1:
 
-                with open('Modulo_3/Proyecto_Final/HTML/top10_education.html', 'r', encoding='utf-8') as f:
+                with open('HTML/top10_education.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
                     st.components.v1.html(html_content, height=350)
 
-                with open('Modulo_3/Proyecto_Final/HTML/top10_cost_living.html', 'r', encoding='utf-8') as f:
+                with open('HTML/top10_cost_living.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
                     st.components.v1.html(html_content, height=350, width=1500)
 
-                with open('Modulo_3/Proyecto_Final/HTML/top10_safety.html', 'r', encoding='utf-8') as f:
+                with open('HTML/top10_safety.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
                     st.components.v1.html(html_content, height=350)
 
-                with open('Modulo_3/Proyecto_Final/HTML/top10_environment.html', 'r', encoding='utf-8') as f:
+                with open('HTML/top10_environment.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
                     st.components.v1.html(html_content, height=350)
 
@@ -322,19 +325,19 @@ elif page == "Top10":
 
             with col2:
                 
-                with open('Modulo_3/Proyecto_Final/HTML/top10_healthcare.html', 'r', encoding='utf-8') as f:
+                with open('HTML/top10_healthcare.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
                     st.components.v1.html(html_content, height=350, width=1500)
 
-                with open('Modulo_3/Proyecto_Final/HTML/top10_leisure.html', 'r', encoding='utf-8') as f:
+                with open('HTML/top10_leisure.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
                     st.components.v1.html(html_content, height=350)
 
-                with open('Modulo_3/Proyecto_Final/HTML/top10_connectivity.html', 'r', encoding='utf-8') as f:
+                with open('HTML/top10_connectivity.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
                     st.components.v1.html(html_content, height=350, width=1500)
 
-                with open('Modulo_3/Proyecto_Final/HTML/top10_economy.html', 'r', encoding='utf-8') as f:
+                with open('HTML/top10_economy.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
                     st.components.v1.html(html_content, height=350, width=3000)
 
@@ -348,12 +351,12 @@ elif page == "Environment":
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        with open('Modulo_3/Proyecto_Final/HTML/AQI_worldmap.html', 'r', encoding='utf-8') as f:
+        with open('HTML/AQI_worldmap.html', 'r', encoding='utf-8') as f:
             html_content = f.read()
             st.components.v1.html(html_content, height=600, width=1200)
 
     with col3:
-        st.image('Modulo_3/Proyecto_Final/img/AQI_std.png', width=500)
+        st.image('img/AQI_std.png', width=500)
 
         # Para que el usuario busque por pais que le interese:
         
@@ -641,12 +644,12 @@ elif page == "City Rating":
 
     # --------------------SIDEBAR-------------------------------------#
 
-    st.sidebar.image('Modulo_3\Proyecto_Final\img\img_world.jpg', use_column_width=True)
+    st.sidebar.image('img\img_world.jpg', use_column_width=True)
     st.sidebar.title("Filters")
     st.sidebar.write('-------')
 
     continent_options = ['All'] + list(city_df['Continent'].unique())
-    selected_continents = st.sidebar.multiselect("Select Continents", options=continent_options, default=['All'])
+    selected_continents = st.sidebar.multiselect("Select Continents", options=continent_options, default=['Europe'])
 
     # Se filtran los países según los continentes seleccionados o mostrar todos los países si se selecciona "All"
     if 'All' in selected_continents:
@@ -654,17 +657,34 @@ elif page == "City Rating":
     else:
         country_options = ['All'] + list(city_df[city_df['Continent'].isin(selected_continents)]['Country'].unique())
 
-    selected_countries = st.sidebar.multiselect("Select Countries", options=country_options, default=['All'])
+    selected_countries = st.sidebar.multiselect("Select Countries", options=country_options, default=['Germany'])
+
+    # Filtrar ciudades según países seleccionados
+    if 'All' in selected_countries:
+        city_options = ['All'] + list(city_df['City'].unique())
+    else:
+        city_options = ['All'] + list(city_df[city_df['Country'].isin(selected_countries)]['City'].unique())
+
+    selected_cities = st.sidebar.multiselect("Select Cities", options=city_options, default=['All'])
+
 
     # Se filtra los datos según la selección del usuario
-    if 'All' in selected_continents and 'All' in selected_countries:
+    if 'All' in selected_continents and 'All' in selected_countries and 'All' in selected_cities:
         filtered_df = city_df
-    elif 'All' not in selected_continents and 'All' in selected_countries:
+    elif 'All' not in selected_continents and 'All' in selected_countries and 'All' in selected_cities:
         filtered_df = city_df[city_df['Continent'].isin(selected_continents)]
-    elif 'All' in selected_continents and 'All' not in selected_countries:
+    elif 'All' in selected_continents and 'All' not in selected_countries and 'All' in selected_cities:
         filtered_df = city_df[city_df['Country'].isin(selected_countries)]
-    else:
+    elif 'All' in selected_continents and 'All' in selected_countries and 'All' not in selected_cities:
+        filtered_df = city_df[city_df['City'].isin(selected_cities)]
+    elif 'All' not in selected_continents and 'All' not in selected_countries and 'All' in selected_cities:
         filtered_df = city_df[(city_df['Continent'].isin(selected_continents)) & (city_df['Country'].isin(selected_countries))]
+    elif 'All' not in selected_continents and 'All' in selected_countries and 'All' not in selected_cities:
+        filtered_df = city_df[(city_df['Continent'].isin(selected_continents)) & (city_df['City'].isin(selected_cities))]
+    elif 'All' in selected_continents and 'All' not in selected_countries and 'All' not in selected_cities:
+        filtered_df = city_df[(city_df['Country'].isin(selected_countries)) & (city_df['City'].isin(selected_cities))]
+    else:
+        filtered_df = city_df[(city_df['Continent'].isin(selected_continents)) & (city_df['Country'].isin(selected_countries)) & (city_df['City'].isin(selected_cities))]
 
 # --------------------GRAFICOS-------------------------------------#
 
@@ -702,12 +722,12 @@ elif page == "Country Evolution":
 
     # --------------------SIDEBAR-------------------------------------#
 
-    st.sidebar.image('Modulo_3\Proyecto_Final\img\img_world.jpg', use_column_width=True)
+    st.sidebar.image('img\img_world.jpg', use_column_width=True)
     st.sidebar.title("Filters")
     st.sidebar.write('-------')
 
     country_options = ['All'] + list(countries_df['Country'].unique())
-    selected_countries = st.sidebar.multiselect("Select Countries", options=country_options, default=['All'])
+    selected_countries = st.sidebar.multiselect("Select Countries", options=country_options, default=['Germany', 'Denmark'])
 
     # Filtrar los datos según la selección del usuario
     if 'All' in selected_countries:
@@ -774,12 +794,12 @@ elif page == "Your best place":
     variables = ['Cost of Living', 'Travel Connectivity', 'Safety', 'Healthcare', 'Education', 'Environmental Quality', 'Economy', 'Leisure & Culture', 'Business Freedom', 'Outdoors']
 
     # Mostrar las variables y permitir al usuario seleccionar tres
-    selected_variables = st.multiselect("Select only 4 according to your preferences:", variables)
+    selected_variables = st.multiselect("Select only 3 according to your preferences:", variables)
 
     if selected_variables:
 
-        if len(selected_variables) != 4:
-            st.error('Please select only 4 variables.')
+        if len(selected_variables) != 3:
+            st.error('Please select only 3 variables.')
         else:
             st.success(f"You selected: {', '.join(selected_variables)}")
 
@@ -790,7 +810,7 @@ elif page == "Your best place":
         normalized_df['City'] = city_df['City']
 
         # Entrenar el modelo KNN
-        knn = NearestNeighbors(n_neighbors=5)
+        knn = NearestNeighbors(n_neighbors=3)
         knn.fit(normalized_df[selected_variables])
 
         # Obtener los valores más altos para las variables seleccionadas
@@ -826,8 +846,6 @@ elif page == "Conclusions":
         st.markdown("<h1 style='text-align: center; font-size:45px;'>Key Takeaways</h1>", unsafe_allow_html=True)
         st.write('')
         st.write('')
-
-        #st.title("Key Takeaways")
 
         st.subheader("🌍 Insightful Analysis")
         st.write("Identifying cities that stand out for their quality of life.")
