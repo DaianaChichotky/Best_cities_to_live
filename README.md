@@ -38,7 +38,7 @@ To achieve these objectives, data was collected from Kaggle, which collected the
 
 I developed an interactive application using Streamlit, which allows users to explore and analyze the best cities to live.
 
-🔗 Link to the application: [Best_cities.streamlit.app](insertar el link) 
+🔗 Link to the application: [Best_cities.streamlit.app](https://best-cities.streamlit.app/)
 
 <img src="video_descriptive.gif" alt="Video of the app" autoplay>
 
