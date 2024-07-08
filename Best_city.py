@@ -305,42 +305,194 @@ elif page == "Top10":
 
             with col1:
 
-                with open('HTML/top10_education.html', 'r', encoding='utf-8') as f:
-                    html_content = f.read()
-                    st.components.v1.html(html_content, height=350)
+                # Graph 1
 
-                with open('HTML/top10_cost_living.html', 'r', encoding='utf-8') as f:
-                    html_content = f.read()
-                    st.components.v1.html(html_content, height=350)
+                top_10_safest_cities = city_df.nlargest(10, 'Safety')
+                colors = ['#4e6f43','#668f4f','#7fa465','#9bc27e','#b2cb91', '#c5e384', '#b3e1a7', '#a7e58e', '#d9f08c', '#e6f2b2', '#bbf1b1']
+                fig = px.bar(top_10_safest_cities, 
+                            x='Safety', 
+                            y='City', 
+                            color='Country', 
+                            color_discrete_sequence=colors,
+                            orientation='h',
+                            title='Top 10 Safety',
+                            labels={'Safety': 'Safety Score', 'City': 'City'},
+                            height=400, 
+                            width=600)
+                fig.update_layout(xaxis_title='',
+                                yaxis_title='City',
+                                yaxis_categoryorder='total ascending',
+                                xaxis_showgrid=False,
+                                yaxis_showgrid=False,
+                                template='plotly_white',
+                                xaxis_tickvals=[])
+                st.plotly_chart(fig)
 
-                with open('HTML/top10_safety.html', 'r', encoding='utf-8') as f:
-                    html_content = f.read()
-                    st.components.v1.html(html_content, height=350)
+                # Graph 2
 
-                with open('HTML/top10_environment.html', 'r', encoding='utf-8') as f:
-                    html_content = f.read()
-                    st.components.v1.html(html_content, height=350)
+                top_10_education = city_df.nlargest(10, 'Education')
+                colors = ['#aec6cf', '#a3c1da', '#a1c4f2', '#9fdaf6', '#a4d8e5', '#92d6e9', '#99e2f2', '#b3e5f5', '#b1e4f7', '#c0f7ff']
+                fig = px.bar(top_10_education,
+                            x='Education',
+                            y='City', 
+                            color='Country', 
+                            color_discrete_sequence=colors,
+                            orientation='h',
+                            title='Top 10 Education',
+                            labels={'Education': 'Eduation Score', 'City': 'City'},
+                            height=400,
+                            width=600) 
 
-                    
+                fig.update_layout(xaxis_title='',
+                                yaxis_title='City',
+                                yaxis_categoryorder='total ascending',
+                                xaxis_showgrid=False,
+                                yaxis_showgrid=False,
+                                template='plotly_white',
+                                xaxis_tickvals=[])
+                st.plotly_chart(fig)
+
+                # Graph 3
+
+                top_10_economy = city_df.nlargest(10, 'Economy')
+                colors = ['#ff6961', '#ffb3b3', '#ffbdbd', '#ff9aa2', '#ffacb7', '#ffafb0', '#ffada5', '#ffcccb', '#ffb7c5', '#ffccd5']
+                fig = px.bar(top_10_economy,
+                            x='Economy',
+                            y='City',
+                            color='Country',
+                            color_discrete_sequence=colors,
+                            orientation='h',
+                            title='Top 10 Economy',
+                            labels={'Economy': 'Economy Score', 'City': 'City'},
+                            height=400,
+                            width=600) 
+                fig.update_layout(xaxis_title='',
+                                yaxis_title='City',
+                                yaxis_categoryorder='total ascending',
+                                xaxis_showgrid=False,
+                                yaxis_showgrid=False,
+                                template='plotly_white',
+                                xaxis_tickvals=[] )
+                st.plotly_chart(fig)
+
+                 # Graph 4
+
+                top_10_costliving = city_df.nlargest(10, 'Cost of Living')
+                colors = ['#cba3d8', '#dab4de', '#e1c3e8', '#e0bfe9', '#e6c9f2', '#d9a7e3', '#ddc1ef', '#e6c2f7', '#e3a8ff', '#ddb5e7']
+                fig = px.bar(top_10_costliving,
+                            x='Cost of Living',
+                            y='City',
+                            color='Country',
+                            color_discrete_sequence=colors,
+                            orientation='h',
+                            title='Top 10 Cost of Living',
+                            labels={'Cost of Living': 'Cost of Living Score', 'City': 'City'},
+                            height=400,
+                            width=600) 
+                fig.update_layout(xaxis_title='',
+                                yaxis_title='City',
+                                yaxis_categoryorder='total ascending',
+                                xaxis_showgrid=False,
+                                yaxis_showgrid=False,
+                                template='plotly_white',
+                                xaxis_tickvals=[])
+                st.plotly_chart(fig)
 
             with col2:
-                
-                with open('HTML/top10_healthcare.html', 'r', encoding='utf-8') as f:
-                    html_content = f.read()
-                    st.components.v1.html(html_content, height=350)
 
-                with open('HTML/top10_leisure.html', 'r', encoding='utf-8') as f:
-                    html_content = f.read()
-                    st.components.v1.html(html_content, height=350)
+                 # Graph 5
 
-                with open('HTML/top10_connectivity.html', 'r', encoding='utf-8') as f:
-                    html_content = f.read()
-                    st.components.v1.html(html_content, height=350)
+                top_10_environment = city_df.nlargest(10, 'Environmental Quality')
 
-                with open('HTML/top10_economy.html', 'r', encoding='utf-8') as f:
-                    html_content = f.read()
-                    st.components.v1.html(html_content, height=350)
+                colors = ['#ffb347', '#ffd1b2', '#ffd1a3', '#ffb994', '#ffcc99', '#ffdab3', '#ffddb1', '#ffd9c2', '#ffe0a1', '#ffd2b2']
+                fig = px.bar(top_10_environment,
+                            x='Environmental Quality',
+                            y='City', 
+                            color='Country',
+                            color_discrete_sequence=colors,
+                            orientation='h',
+                            title='Top 10 Environmental Quality',
+                            labels={'Environmental Quality': 'Environmental Quality Score', 'City': 'City'},
+                            height=400,
+                            width=600) 
+                fig.update_layout(xaxis_title='',
+                                yaxis_title='City',
+                                yaxis_categoryorder='total ascending',
+                                xaxis_showgrid=False,
+                                yaxis_showgrid=False,
+                                template='plotly_white',
+                                xaxis_tickvals=[])
+                st.plotly_chart(fig)
 
+                # Graph 6
+
+                top_10_leisure = city_df.nlargest(10, 'Leisure & Culture')
+                colors = ['#ffb3ba', '#ffccd5', '#ffc9de', '#ff9aa2', '#ffacb7', '#ffb6c1', '#ffd1d9', '#ffc9cb', '#ffb0c7', '#ffc0cb']
+                fig = px.bar(top_10_leisure,
+                            x='Leisure & Culture',
+                            y='City',
+                            color='Country',
+                            color_discrete_sequence=colors,
+                            orientation='h',
+                            title='Top 10 of Leisure & Culture',
+                            labels={'Leisure & Culture': 'Leisure & Culture Score', 'City': 'City'},
+                            height=400,
+                            width=600) 
+                fig.update_layout(xaxis_title='',
+                                yaxis_title='City',
+                                yaxis_categoryorder='total ascending',
+                                xaxis_showgrid=False,
+                                yaxis_showgrid=False,
+                                template='plotly_white',
+                                xaxis_tickvals=[])
+                st.plotly_chart(fig)
+
+                # Graph 7
+
+                top_10_connectivity = city_df.nlargest(10, 'Travel Connectivity')
+                colors = ['#77ddcc', '#a0e6d9', '#adeeee', '#b2f4e8', '#99ffcc', '#a3f7e8', '#b1e5e9', '#c8ffff', '#bbf6f6', '#ace7e7']
+                fig = px.bar(top_10_connectivity,
+                            x='Travel Connectivity',
+                            y='City',
+                            color='Country',
+                            color_discrete_sequence=colors,
+                            orientation='h',
+                            title='Top 10 of Travel Connectivity',
+                            labels={'Travel Connectivity': 'Travel Connectivity Score', 'City': 'City'},
+                            height=400,
+                            width=600)
+                fig.update_layout(xaxis_title='',
+                                yaxis_title='City',
+                                yaxis_categoryorder='total ascending',
+                                xaxis_showgrid=False,
+                                yaxis_showgrid=False,
+                                template='plotly_white',
+                                xaxis_tickvals=[])
+                st.plotly_chart(fig)
+
+                 # Graph 8
+
+                top_10_connectivity = city_df.nlargest(10, 'Healthcare')
+
+                colors = '#bf9000','#ffe599','#ffd966', '#FFD580'
+                fig = px.bar(top_10_connectivity,
+                            x='Healthcare',
+                            y='City',
+                            color='Country',
+                            color_discrete_sequence=colors,
+                            orientation='h',
+                            title='Top 10 of Healthcare',
+                            labels={'Healthcare': 'Healthcare Score', 'City': 'City'},
+                            height=400,
+                            width=600) 
+                fig.update_layout(xaxis_title='',
+                                yaxis_title='City',
+                                yaxis_categoryorder='total ascending',
+                                xaxis_showgrid=False,
+                                yaxis_showgrid=False,
+                                template='plotly_white',
+                                xaxis_tickvals=[])
+                st.plotly_chart(fig)
 
 ####################################  PAGE 3  ######################################
 
