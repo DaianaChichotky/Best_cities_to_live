@@ -644,7 +644,7 @@ elif page == "City Rating":
 
     # --------------------SIDEBAR-------------------------------------#
 
-    st.sidebar.image('img\img_world.jpg', use_column_width=True)
+    st.sidebar.image('img/img_world.jpg', use_column_width=True)
     st.sidebar.title("Filters")
     st.sidebar.write('-------')
 
@@ -722,7 +722,7 @@ elif page == "Country Evolution":
 
     # --------------------SIDEBAR-------------------------------------#
 
-    st.sidebar.image('img\img_world.jpg', use_column_width=True)
+    st.sidebar.image('img/img_world.jpg', use_column_width=True)
     st.sidebar.title("Filters")
     st.sidebar.write('-------')
 
