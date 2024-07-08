@@ -10,6 +10,7 @@ sns.set()
 import matplotlib.pyplot as plt
 import os
 import json
+from PIL import Image
 
 # interactive maps
 import folium
@@ -44,27 +45,26 @@ st.set_page_config(page_title='Best cities to live',
 
 # ---------------------BACKGROUND IMAGE---------------------------------------#
 
-from PIL import Image
 
-def change_opacity(input_image_path, output_image_path, opacity):
+# def change_opacity(input_image_path, output_image_path, opacity):
 
-    img = Image.open(input_image_path).convert("RGBA")
+    #img = Image.open(input_image_path).convert("RGBA")
     
-    datas = img.getdata()
+    #datas = img.getdata()
     
-    new_data = []
-    for item in datas:
-        new_data.append((item[0], item[1], item[2], int(item[3] * opacity)))
+    #new_data = []
+    #for item in datas:
+        #new_data.append((item[0], item[1], item[2], int(item[3] * opacity)))
     
-    img.putdata(new_data)
+    #img.putdata(new_data)
     
-    img.save(output_image_path, "PNG")
+    #img.save(output_image_path, "PNG")
 
 input_image_path = "img\img.png"
 output_image_path = "img\img_2.png"
 opacity = 0.3  # 50% de opacidad
 
-change_opacity(input_image_path, output_image_path, opacity)
+#change_opacity(input_image_path, output_image_path, opacity)
 
 
 def add_bg_from_local(image_file, position):
