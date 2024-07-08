@@ -553,7 +553,7 @@ elif page == "Environment":
 
     st.write('----') 
 
-    st.markdown("### City comparison:")
+    st.markdown("### City comparison on Air Quality:")
 
     selected_continents = st.multiselect('🌍 Select continent(s):', ['All Continents'] + list(set(city_df['Continent'].unique())), default='All Continents')
     
@@ -573,7 +573,7 @@ elif page == "Environment":
     else:
         df_filtered = city_df[(city_df['Continent'].isin(selected_continents)) & (city_df['Country'].isin(selected_countries))]
 
-    selected_cities = st.multiselect('🏙️ Select cities:', options=['All cities'] + list(set(df_filtered['City'].unique())), default='All cities')
+    selected_cities = st.multiselect('🌍 Select cities:', options=['All cities'] + list(set(df_filtered['City'].unique())), default='All cities')
 
     if 'All cities' in selected_cities:
         df_final = df_filtered
