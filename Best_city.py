@@ -353,10 +353,10 @@ elif page == "Environment":
     with col1:
         with open('HTML/AQI_worldmap.html', 'r', encoding='utf-8') as f:
             html_content = f.read()
-            st.components.v1.html(html_content, height=600, width=1200)
+            st.components.v1.html(html_content, height=500, width=1000)
 
     with col3:
-        st.image('img/AQI_std.png', width=500)
+        st.image('img/AQI_std.png', width=400)
 
         # Para que el usuario busque por pais que le interese:
         
