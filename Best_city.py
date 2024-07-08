@@ -311,7 +311,7 @@ elif page == "Top10":
 
                 with open('HTML/top10_cost_living.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
-                    st.components.v1.html(html_content, height=350, width=1500)
+                    st.components.v1.html(html_content, height=350)
 
                 with open('HTML/top10_safety.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
@@ -327,7 +327,7 @@ elif page == "Top10":
                 
                 with open('HTML/top10_healthcare.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
-                    st.components.v1.html(html_content, height=350, width=1500)
+                    st.components.v1.html(html_content, height=350)
 
                 with open('HTML/top10_leisure.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
@@ -335,11 +335,11 @@ elif page == "Top10":
 
                 with open('HTML/top10_connectivity.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
-                    st.components.v1.html(html_content, height=350, width=1500)
+                    st.components.v1.html(html_content, height=350)
 
                 with open('HTML/top10_economy.html', 'r', encoding='utf-8') as f:
                     html_content = f.read()
-                    st.components.v1.html(html_content, height=350, width=3000)
+                    st.components.v1.html(html_content, height=350)
 
 
 ####################################  PAGE 3  ######################################
