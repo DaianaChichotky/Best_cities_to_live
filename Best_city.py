@@ -317,8 +317,7 @@ elif page == "Top10":
                             orientation='h',
                             title='Top 10 Safety',
                             labels={'Safety': 'Safety Score', 'City': 'City'},
-                            height=400, 
-                            width=600)
+                            width=650)
                 fig.update_layout(xaxis_title='',
                                 yaxis_title='City',
                                 yaxis_categoryorder='total ascending',
@@ -340,8 +339,7 @@ elif page == "Top10":
                             orientation='h',
                             title='Top 10 Education',
                             labels={'Education': 'Eduation Score', 'City': 'City'},
-                            height=400,
-                            width=600) 
+                            width=650) 
 
                 fig.update_layout(xaxis_title='',
                                 yaxis_title='City',
@@ -364,8 +362,7 @@ elif page == "Top10":
                             orientation='h',
                             title='Top 10 Economy',
                             labels={'Economy': 'Economy Score', 'City': 'City'},
-                            height=400,
-                            width=600) 
+                            width=650) 
                 fig.update_layout(xaxis_title='',
                                 yaxis_title='City',
                                 yaxis_categoryorder='total ascending',
@@ -387,8 +384,7 @@ elif page == "Top10":
                             orientation='h',
                             title='Top 10 Cost of Living',
                             labels={'Cost of Living': 'Cost of Living Score', 'City': 'City'},
-                            height=400,
-                            width=600) 
+                            width=650) 
                 fig.update_layout(xaxis_title='',
                                 yaxis_title='City',
                                 yaxis_categoryorder='total ascending',
@@ -413,8 +409,7 @@ elif page == "Top10":
                             orientation='h',
                             title='Top 10 Environmental Quality',
                             labels={'Environmental Quality': 'Environmental Quality Score', 'City': 'City'},
-                            height=400,
-                            width=600) 
+                            width=650) 
                 fig.update_layout(xaxis_title='',
                                 yaxis_title='City',
                                 yaxis_categoryorder='total ascending',
@@ -436,8 +431,7 @@ elif page == "Top10":
                             orientation='h',
                             title='Top 10 of Leisure & Culture',
                             labels={'Leisure & Culture': 'Leisure & Culture Score', 'City': 'City'},
-                            height=400,
-                            width=600) 
+                            width=650) 
                 fig.update_layout(xaxis_title='',
                                 yaxis_title='City',
                                 yaxis_categoryorder='total ascending',
@@ -459,8 +453,7 @@ elif page == "Top10":
                             orientation='h',
                             title='Top 10 of Travel Connectivity',
                             labels={'Travel Connectivity': 'Travel Connectivity Score', 'City': 'City'},
-                            height=400,
-                            width=600)
+                            width=650)
                 fig.update_layout(xaxis_title='',
                                 yaxis_title='City',
                                 yaxis_categoryorder='total ascending',
@@ -483,8 +476,7 @@ elif page == "Top10":
                             orientation='h',
                             title='Top 10 of Healthcare',
                             labels={'Healthcare': 'Healthcare Score', 'City': 'City'},
-                            height=400,
-                            width=600) 
+                            width=650) 
                 fig.update_layout(xaxis_title='',
                                 yaxis_title='City',
                                 yaxis_categoryorder='total ascending',
