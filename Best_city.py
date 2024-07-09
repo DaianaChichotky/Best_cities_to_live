@@ -682,29 +682,16 @@ elif page == "Economy":
 
         st.plotly_chart(fig)
 
-# Relation between Startups and Business Freedom
-    fig = px.scatter(df_final,
-                        x='Startups',
-                        y='Business Freedom',
-                        color='City',
-                        size='Business Freedom',
-                        hover_name='City',
-                        title='Startups Vs Business Freedom',
-                        height=400,
-                        width=900)
-    st.plotly_chart(fig)
-
-    st.markdown("""
-                    <p style='font-size:40px; text-align: left; color:black; margin:0;'>
-                    <strong>Is there a significant correlation between "Business Freedom" and "Startups"?</strong></p>""",
+    st.markdown("""<p style='font-size:40px; text-align: left; color:black; margin:0;'>
+                    <strong>Correlation between "Business Freedom" and "Startups"</strong></p>""",
                     unsafe_allow_html=True)
-            
-    st.markdown("""
-                    <p style='font-size:25px; text-align: left; color:black; font-style:italic; margin:0;'>
+                
+    st.markdown("""<p style='font-size:25px; text-align: left; color:black; font-style:italic; margin:0;'>
                     After the assessment using Spearman's test I can confirm that both variables
                     are dependant which confirms that <strong>the number of startups in a city depends on the business freedom.</p>""",
                     unsafe_allow_html=True)
-
+    
+    st.write('')
 
     #--------------------- AB TESTING-------------------------------#
 
