@@ -43,7 +43,6 @@ st.set_page_config(page_title='Best cities to live',
                    layout='wide',
                    page_icon='🌎')
 
-
 # ---------------------BACKGROUND IMAGE---------------------------------------#
 
 
