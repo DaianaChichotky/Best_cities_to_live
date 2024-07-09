@@ -646,7 +646,7 @@ elif page == "Economy":
             title='Startups per city',
             labels={'Startups': 'Startups', 'City': 'City'},
             height=400, 
-            width=800)
+            width=600)
 
         fig.update_layout(
             xaxis_title='',
@@ -666,7 +666,7 @@ elif page == "Economy":
                          hover_name='City',
                          title='Startups Vs Economy',
                          height=400,
-                         width=800)
+                         width=600)
         st.plotly_chart(fig)
 
     with col2:
@@ -682,7 +682,7 @@ elif page == "Economy":
             title='Business Freedom per city',
             labels={'Business Freedom': 'Business Freedom', 'City': 'City'},
             height=400, 
-            width=800)
+            width=600)
 
         fig.update_layout(
             xaxis_title='',
@@ -702,7 +702,7 @@ elif page == "Economy":
                          hover_name='City',
                          title='Business Freedom Vs Economy',
                          height=400,
-                         width=800)
+                         width=600)
         st.plotly_chart(fig)
 
     st.markdown("""
