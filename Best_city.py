@@ -210,13 +210,12 @@ if page == "Introduction":
                         photo_url = get_random_photo(country)
                     
                         # Check if a valid photo URL was obtained
-                        if photo_url:
+                        #if photo_url:
                             # Replace the image with the new one
-                            st.image(photo_url, width=600, use_column_width=True)
-                            st.write(
-                                "<div style='text-align:right;color:red;font-size:14px'>Generated using Unsplash API</div>",
-                                unsafe_allow_html=True
-                            )
+                            #st.image(photo_url, width=600, use_column_width=True)
+                            #st.write(
+                                #"<div style='text-align:right;color:red;font-size:14px'>Generated using Unsplash API</div>",
+                                #unsafe_allow_html=True)
 
     if __name__ == "__main__":
                 main()
@@ -696,18 +695,15 @@ elif page == "Economy":
     st.plotly_chart(fig)
 
     st.markdown("""
-                <p style='font-size:40px; text-align: left; color:black; margin:0;'>
-                <strong>Is there a significant correlation between "Business Freedom" and "Startups"?</strong></p>""",
-                unsafe_allow_html=True)
-        
+                    <p style='font-size:40px; text-align: left; color:black; margin:0;'>
+                    <strong>Is there a significant correlation between "Business Freedom" and "Startups"?</strong></p>""",
+                    unsafe_allow_html=True)
+            
     st.markdown("""
-                <p style='font-size:25px; text-align: left; color:black; font-style:italic; margin:0;'>
-                After the assessment using Spearman's test I can confirm that both variables
-                are dependant which confirms that <strong>the number of startups in a city depends on the business freedom.</p>""",
-                unsafe_allow_html=True)
-        
-    st.write("")
-    st.write("")
+                    <p style='font-size:25px; text-align: left; color:black; font-style:italic; margin:0;'>
+                    After the assessment using Spearman's test I can confirm that both variables
+                    are dependant which confirms that <strong>the number of startups in a city depends on the business freedom.</p>""",
+                    unsafe_allow_html=True)
 
 
     #--------------------- AB TESTING-------------------------------#
