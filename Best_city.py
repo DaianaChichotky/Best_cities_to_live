@@ -994,7 +994,7 @@ elif page == "Conclusions":
     
     with col2:
 
-        st.markdown("<h1 style='text-align: center; font-size:45px;'>So...Which is the best city to live?</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center; font-size:45px;'>...Which is the best city to live?</h1>", unsafe_allow_html=True)
         
         st.markdown("""<p style='font-size:30px; text-align: center; color:black; font-style:italic; margin:0;'>
             <strong>It depends on you and your preferences! With this app we will help you to discover <strong>your best place:</strong></p>""", unsafe_allow_html=True)
@@ -1005,7 +1005,7 @@ elif page == "Conclusions":
         
         st.markdown("""
     <p style="font-size: 18px; line-height: 1.6;">
-    1. <strong>Explore and compare cities</strong>across diverse factors.
+    1. <strong>Explore and compare cities</strong> across diverse factors.
     </p>
     
     <p style="font-size: 18px; line-height: 1.6;">
@@ -1017,11 +1017,11 @@ elif page == "Conclusions":
     </p>
     
     <p style="font-size: 18px; line-height: 1.6;">
-    4. <strong>Business Freedom Impact</strong>between cities.
+    4. <strong>Business Freedom Impact</strong> between cities.
     </p>
     
     <p style="font-size: 18px; line-height: 1.6;">
-    6. <strong>Personalized Recommendations</strong>: Receive personalized city recommendations tailored to individual preferences and lifestyle.
+    6. <strong>Get the top 3 best cities</strong> according to your preferences and lifestyle.
     </p>
     """, unsafe_allow_html=True)
         
