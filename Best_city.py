@@ -550,7 +550,7 @@ elif page == "Environment":
             else:
                 st.warning(f"Country '{country_name.capitalize()}' not found or no AQI value available.")
 
-    st.write('----') 
+    st.write('----')
 
     st.markdown("### City comparison on Air Quality:")
 
