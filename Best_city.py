@@ -919,7 +919,7 @@ elif page == "Country Evolution":
                         dtick=1,  # Asegura que cada año esté etiquetado
                         showgrid=False),
                         yaxis=dict(showgrid=False),
-                        width=600)
+                        width=400)
                 
                 st.plotly_chart(fig)
             else:
@@ -939,7 +939,7 @@ elif page == "Country Evolution":
                         dtick=1,  # Asegura que cada año esté etiquetado
                         showgrid=False),
                         yaxis=dict(showgrid=False),
-                        width=600)
+                        width=400)
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
