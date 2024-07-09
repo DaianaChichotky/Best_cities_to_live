@@ -161,8 +161,6 @@ if page == "Introduction":
 
 # Random imagenes 
 
-    
-
 # Unsplash API access key
     access_key = '62QWPpkPYOpWWKoUjSAPIvLqe_myc3HddfM3EjlI724'
 
@@ -187,38 +185,68 @@ if page == "Introduction":
         st.markdown('#### Random Photos of Countries Around the World')
 
         #Input for user to enter a city name
-        country = st.text_input("Enter the name of a country:", "Argentina")
+        country = st.text_input("Enter the name of a country:", "")
 
-        #Create the variable photo_url and assign it the result of the get_random_photo() function
-        photo_url = get_random_photo(country)
+        # Botón para activar la búsqueda
+            
+        # Estilos CSS para el botón y el input
+        st.markdown("""
+    <style>
+        .st-0 {
+            height: 40px !important;
+            font-size: 20px !important;
+            padding: 10px !important;
+            background-color: #E6F0E8 !important;
+            border-color: #5CB85C !important;
+            color: #3C763D !important;
+        }
+        .stButton > button {
+            background-color: #5CB85C !important;
+            color: white !important;
+            font-size: 20px !important;
+            font-weight: bold !important;
+        }
+        .stButton > button:hover {
+            background-color: #449D44 !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+        
+
+        if st.button('Search'):
+            if country.strip() == "":
+                st.warning("Please select a country")
+            else:
+                #Create the variable photo_url and assign it the result of the get_random_photo() function
+                photo_url = get_random_photo(country)
     
-        #Check if a valid photo URL was obtained
-        if photo_url:
+                #Check if a valid photo URL was obtained
+                if photo_url:
 
-            col1, col2, col3 = st.columns(3)
+                    col1, col2, col3 = st.columns(3)
 
-            with col2:
-                    #Display image and caption
-                    st.image(photo_url, width=600, use_column_width=True)
-                    st.write(
-                        "<div style='text-align:right;color:red;font-size:14px'>Generated using Unsplash API</div>",
-                        unsafe_allow_html=True)
-                
-                    #Display "Generate another image" button
-                    if st.button(f"Generate another random image of {country}"):
-                        #Get a new random photo
-                        photo_url = get_random_photo(country)
-                    
-                        # Check if a valid photo URL was obtained
-                        #if photo_url:
-                            # Replace the image with the new one
-                            #st.image(photo_url, width=600, use_column_width=True)
-                            #st.write(
-                                #"<div style='text-align:right;color:red;font-size:14px'>Generated using Unsplash API</div>",
-                                #unsafe_allow_html=True)
+                    with col2:
+                            #Display image and caption
+                            st.image(photo_url, width=600, use_column_width=True)
+                            st.write(
+                                "<div style='text-align:right;color:red;font-size:14px'>Generated using Unsplash API</div>",
+                                unsafe_allow_html=True)
+                        
+                            # #Display "Generate another image" button
+                            # if st.button(f"Generate another random image of {country}"):
+                            #     #Get a new random photo
+                            #     photo_url = get_random_photo(country)
+                            
+                            #     # Check if a valid photo URL was obtained
+                            #     if photo_url:
+                            #         #Replace the image with the new one
+                            #         st.image(photo_url, width=600, use_column_width=True)
+                            #         st.write(
+                            #             "<div style='text-align:right;color:red;font-size:14px'>Generated using Unsplash API</div>",
+                            #             unsafe_allow_html=True)
 
     if __name__ == "__main__":
-                main()
+                        main()
    
 
 ####################################  PAGE 2  ######################################
@@ -257,7 +285,7 @@ elif page == "Top10":
             
             # Estilos CSS para el botón y el input
             st.markdown("""<style>.st-0 {
-         eight: 40px !important;
+         height: 40px !important;
          font-size: 20px !important;
          padding: 10px !important;
          background-color: #E6F0E8 !important;
@@ -637,6 +665,7 @@ elif page == "Economy":
     with col1:
         
         # Startups per city 
+
         city_df_sorted_startups = df_final.sort_values(by='Startups', ascending=False)
 
         fig = px.bar(
