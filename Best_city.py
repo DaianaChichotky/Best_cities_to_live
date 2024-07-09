@@ -854,7 +854,7 @@ elif page == "City Rating":
                              title=f'{variable}')
                 fig.update_layout(xaxis=dict(showgrid=False),
                                   yaxis=dict(showgrid=False),
-                                  width=400)
+                                  width=450)
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
@@ -871,7 +871,7 @@ elif page == "City Rating":
                              title=f'{variable}')
                 fig.update_layout(xaxis=dict(showgrid=False),
                                   yaxis=dict(showgrid=False),
-                                  width=400)
+                                  width=450)
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
@@ -919,7 +919,7 @@ elif page == "Country Evolution":
                         dtick=1,  # Asegura que cada año esté etiquetado
                         showgrid=False),
                         yaxis=dict(showgrid=False),
-                        width=400)
+                        width=450)
                 
                 st.plotly_chart(fig)
             else:
@@ -939,7 +939,7 @@ elif page == "Country Evolution":
                         dtick=1,  # Asegura que cada año esté etiquetado
                         showgrid=False),
                         yaxis=dict(showgrid=False),
-                        width=400)
+                        width=450)
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
