@@ -588,8 +588,8 @@ elif page == "Environment":
                     color='Country',
                     title='AQI Value per city',
                     labels={'AQI Value': 'AQI Value', 'City': 'City'},
-                    height=500, 
-                    width=850) 
+                    height=400, 
+                    width=800) 
 
     fig.update_layout(xaxis_showgrid=False,
                         yaxis_showgrid=False,
