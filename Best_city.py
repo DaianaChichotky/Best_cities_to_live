@@ -854,7 +854,7 @@ elif page == "City Rating":
                              title=f'{variable}')
                 fig.update_layout(xaxis=dict(showgrid=False),
                                   yaxis=dict(showgrid=False),
-                                  width=600)
+                                  width=500)
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
@@ -871,7 +871,7 @@ elif page == "City Rating":
                              title=f'{variable}')
                 fig.update_layout(xaxis=dict(showgrid=False),
                                   yaxis=dict(showgrid=False),
-                                  width=600)
+                                  width=500)
                 st.plotly_chart(fig)
             else:
                 st.warning(f"No data available for the selected filters for {variable}.")
