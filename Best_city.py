@@ -102,8 +102,8 @@ st.markdown(
 
 # Configuración del menú
 page = option_menu(None, 
-    ["Introduction", "Top10", "Environment", "Economy", "City Rating", "Country Evolution", "Your best place", "Conclusions"], 
-    icons=["info-circle", "trophy", "tree", "coin", "star", "arrow-up-right", "heart", "clipboard-check"], 
+    ["Introduction", "Top10", "Environment", "Economy", "Rating", "Your best place", "Conclusions"], 
+    icons=["info-circle", "trophy", "tree", "coin", "star", "heart", "clipboard-check"], 
     default_index=0, 
     orientation="horizontal",
     styles={
@@ -253,9 +253,10 @@ if page == "Introduction":
 
 elif page == "Top10":
 
-        tab1, tab2 = st.tabs([
+        tab1, tab2, tab3 = st.tabs([
         "Cities under evaluation",
-        "Top 10 best cities"])
+        "Top 10 best cities",
+        "Happiness evolution"])
         
         with tab1:
 
@@ -323,7 +324,8 @@ elif page == "Top10":
                 elif city_name:
                     st.warning(f"The city '{city_name}' is NOT part of the analysis.")
 
-        
+        #------------- TAB 2 ---------------#
+
         with tab2:
 
             st.title('Top 10 rankings')
@@ -520,6 +522,54 @@ elif page == "Top10":
                                 template='plotly_white',
                                 xaxis_tickvals=[])
                 st.plotly_chart(fig)
+
+        #------------- TAB 3 ---------------#
+        
+        with tab3:
+
+            st.title('Happiness evolution')
+
+            country_options = ['All'] + list(countries_df['Country'].unique())
+            selected_countries = st.multiselect("Select Countries", options=country_options, default=['Argentina'])
+
+            # Filtrar los datos según la selección del usuario
+            if 'All' in selected_countries:
+                filtered_df = countries_df
+            else:
+                filtered_df = countries_df[countries_df['Country'].isin(selected_countries)]
+
+            col1, col2 = st.columns(2)
+
+            with col1:
+
+                fig = px.line(filtered_df,
+                                        x='year',
+                                        y='Life Ladder',
+                                        color='Country',
+                                        title=f'Evolution of Life Ladder by Year')
+                                    
+                fig.update_layout(
+                                xaxis=dict(
+                                    tickmode='linear',
+                                    dtick=1,  # Asegura que cada año esté etiquetado
+                                    showgrid=False),
+                                    yaxis=dict(showgrid=False),
+                                    width=800)
+                            
+                st.plotly_chart(fig)
+
+            with col2:
+
+                st.write('')
+                st.write('')
+                
+                st.markdown("""
+            <p style='font-size:25px; color:black; text-align: justify;'>
+            <strong>Life Ladder score:</strong> The happiness score for each country. <br>
+            The <strong>best possible life</strong> being a 10, and the <strong>worst possible life</strong> being a 0.
+            </p>
+            """,
+            unsafe_allow_html=True)
                 
 
 
@@ -791,162 +841,95 @@ elif page == "Economy":
             
 ####################################  PAGE 5  ######################################
 
-elif page == "City Rating":
+elif page == "Rating":
 
-    st.title('City rating')
-    st.subheader('From 0 to 10 with the larger numbers indicating higher desirability to live.')
+        st.title('City rating')
+        st.subheader('From 0 to 10 with the larger numbers indicating higher desirability to live.')
 
-    # --------------------SIDEBAR-------------------------------------#
+        # --------------------SIDEBAR-------------------------------------#
 
-    st.sidebar.image('img/img_world.jpg', use_column_width=True)
-    st.sidebar.title("Filters")
-    st.sidebar.write('-------')
+        st.sidebar.image('img/img_world.jpg', use_column_width=True)
+        st.sidebar.title("Filters")
+        st.sidebar.write('-------')
 
-    continent_options = ['All'] + list(city_df['Continent'].unique())
-    selected_continents = st.sidebar.multiselect("Select Continents", options=continent_options, default=['Europe'])
+        continent_options = ['All'] + list(city_df['Continent'].unique())
+        selected_continents = st.sidebar.multiselect("Select Continents", options=continent_options, default=['Europe'])
 
-    # Se filtran los países según los continentes seleccionados o mostrar todos los países si se selecciona "All"
-    if 'All' in selected_continents:
-        country_options = ['All'] + list(city_df['Country'].unique())
-    else:
-        country_options = ['All'] + list(city_df[city_df['Continent'].isin(selected_continents)]['Country'].unique())
+        # Se filtran los países según los continentes seleccionados o mostrar todos los países si se selecciona "All"
+        if 'All' in selected_continents:
+            country_options = ['All'] + list(city_df['Country'].unique())
+        else:
+            country_options = ['All'] + list(city_df[city_df['Continent'].isin(selected_continents)]['Country'].unique())
 
-    selected_countries = st.sidebar.multiselect("Select Countries", options=country_options, default=['Germany'])
+        selected_countries = st.sidebar.multiselect("Select Countries", options=country_options, default=['Germany'])
 
-    # Filtrar ciudades según países seleccionados
-    if 'All' in selected_countries:
-        city_options = ['All'] + list(city_df['City'].unique())
-    else:
-        city_options = ['All'] + list(city_df[city_df['Country'].isin(selected_countries)]['City'].unique())
+        # Filtrar ciudades según países seleccionados
+        if 'All' in selected_countries:
+            city_options = ['All'] + list(city_df['City'].unique())
+        else:
+            city_options = ['All'] + list(city_df[city_df['Country'].isin(selected_countries)]['City'].unique())
 
-    selected_cities = st.sidebar.multiselect("Select Cities", options=city_options, default=['All'])
+        selected_cities = st.sidebar.multiselect("Select Cities", options=city_options, default=['All'])
 
 
-    # Se filtra los datos según la selección del usuario
-    if 'All' in selected_continents and 'All' in selected_countries and 'All' in selected_cities:
-        filtered_df = city_df
-    elif 'All' not in selected_continents and 'All' in selected_countries and 'All' in selected_cities:
-        filtered_df = city_df[city_df['Continent'].isin(selected_continents)]
-    elif 'All' in selected_continents and 'All' not in selected_countries and 'All' in selected_cities:
-        filtered_df = city_df[city_df['Country'].isin(selected_countries)]
-    elif 'All' in selected_continents and 'All' in selected_countries and 'All' not in selected_cities:
-        filtered_df = city_df[city_df['City'].isin(selected_cities)]
-    elif 'All' not in selected_continents and 'All' not in selected_countries and 'All' in selected_cities:
-        filtered_df = city_df[(city_df['Continent'].isin(selected_continents)) & (city_df['Country'].isin(selected_countries))]
-    elif 'All' not in selected_continents and 'All' in selected_countries and 'All' not in selected_cities:
-        filtered_df = city_df[(city_df['Continent'].isin(selected_continents)) & (city_df['City'].isin(selected_cities))]
-    elif 'All' in selected_continents and 'All' not in selected_countries and 'All' not in selected_cities:
-        filtered_df = city_df[(city_df['Country'].isin(selected_countries)) & (city_df['City'].isin(selected_cities))]
-    else:
-        filtered_df = city_df[(city_df['Continent'].isin(selected_continents)) & (city_df['Country'].isin(selected_countries)) & (city_df['City'].isin(selected_cities))]
-
-# --------------------GRAFICOS-------------------------------------#
-
-    col1, col2 = st.columns(2)
-    
-    with col1:
-
-        variables = ['Education', 'Cost of Living', 'Safety', 'Tolerance']
-        for variable in variables:
-            if not filtered_df.empty:
-                fig = px.bar(filtered_df,
-                             x='City',
-                             y=variable,
-                             color='City',
-                             title=f'{variable}')
-                fig.update_layout(xaxis=dict(showgrid=False),
-                                  yaxis=dict(showgrid=False),
-                                  width=600)
-                st.plotly_chart(fig)
-            else:
-                st.warning(f"No data available for the selected filters for {variable}.")
-
-    with col2:
-
-        variables = ['Healthcare', 'Leisure & Culture', 'Outdoors', 'Travel Connectivity']
-        for variable in variables:
-            if not filtered_df.empty:
-                fig = px.bar(filtered_df,
-                             x='City',
-                             y=variable,
-                             color='City',
-                             title=f'{variable}')
-                fig.update_layout(xaxis=dict(showgrid=False),
-                                  yaxis=dict(showgrid=False),
-                                  width=600)
-                st.plotly_chart(fig)
-            else:
-                st.warning(f"No data available for the selected filters for {variable}.")
-
-####################################  PAGE 6  ######################################
-
-elif page == "Country Evolution":
-
-    st.title('Country evolution')
-
-    # --------------------SIDEBAR-------------------------------------#
-
-    st.sidebar.image('img/img_world.jpg', use_column_width=True)
-    st.sidebar.title("Filters")
-    st.sidebar.write('-------')
-
-    country_options = ['All'] + list(countries_df['Country'].unique())
-    selected_countries = st.sidebar.multiselect("Select Countries", options=country_options, default=['Germany', 'Denmark'])
-
-    # Filtrar los datos según la selección del usuario
-    if 'All' in selected_countries:
-        filtered_df = countries_df
-    else:
-        filtered_df = countries_df[countries_df['Country'].isin(selected_countries)]
+        # Se filtra los datos según la selección del usuario
+        if 'All' in selected_continents and 'All' in selected_countries and 'All' in selected_cities:
+            filtered_df = city_df
+        elif 'All' not in selected_continents and 'All' in selected_countries and 'All' in selected_cities:
+            filtered_df = city_df[city_df['Continent'].isin(selected_continents)]
+        elif 'All' in selected_continents and 'All' not in selected_countries and 'All' in selected_cities:
+            filtered_df = city_df[city_df['Country'].isin(selected_countries)]
+        elif 'All' in selected_continents and 'All' in selected_countries and 'All' not in selected_cities:
+            filtered_df = city_df[city_df['City'].isin(selected_cities)]
+        elif 'All' not in selected_continents and 'All' not in selected_countries and 'All' in selected_cities:
+            filtered_df = city_df[(city_df['Continent'].isin(selected_continents)) & (city_df['Country'].isin(selected_countries))]
+        elif 'All' not in selected_continents and 'All' in selected_countries and 'All' not in selected_cities:
+            filtered_df = city_df[(city_df['Continent'].isin(selected_continents)) & (city_df['City'].isin(selected_cities))]
+        elif 'All' in selected_continents and 'All' not in selected_countries and 'All' not in selected_cities:
+            filtered_df = city_df[(city_df['Country'].isin(selected_countries)) & (city_df['City'].isin(selected_cities))]
+        else:
+            filtered_df = city_df[(city_df['Continent'].isin(selected_continents)) & (city_df['Country'].isin(selected_countries)) & (city_df['City'].isin(selected_cities))]
 
     # --------------------GRAFICOS-------------------------------------#
 
-    col1, col2 = st.columns(2)
-    
-    with col1:
+        col1, col2 = st.columns(2)
+        
+        with col1:
 
-        variables = ['Life Ladder', 'Social support', 'Healthy life expectancy at birth']
-    
-        for variable in variables:
-            if not filtered_df.empty:
-                fig = px.line(filtered_df,
-                              x='year',
-                              y=variable,
-                              color='Country',
-                              title=f'Evolution of {variable} by Year')
-                          
-                fig.update_layout(
-                    xaxis=dict(
-                        tickmode='linear',
-                        dtick=1,  # Asegura que cada año esté etiquetado
-                        showgrid=False),
-                        yaxis=dict(showgrid=False),
-                        width=600)
-                
-                st.plotly_chart(fig)
-            else:
-                st.warning(f"No data available for the selected filters for {variable}.")
+            variables = ['Education', 'Cost of Living', 'Safety', 'Tolerance']
+            for variable in variables:
+                if not filtered_df.empty:
+                    fig = px.bar(filtered_df,
+                                x='City',
+                                y=variable,
+                                color='City',
+                                title=f'{variable}')
+                    fig.update_layout(xaxis=dict(showgrid=False),
+                                    yaxis=dict(showgrid=False),
+                                    width=600)
+                    st.plotly_chart(fig)
+                else:
+                    st.warning(f"No data available for the selected filters for {variable}.")
 
-    with col2:
+        with col2:
 
-        variables = ['Freedom to make life choices', 'Generosity', 'Perceptions of corruption']
-    
-        for variable in variables:
-            if not filtered_df.empty:
-                fig = px.line(filtered_df, x='year', y=variable, color='Country', 
-                          title=f'Evolution of {variable} by Year')
-                fig.update_layout(
-                    xaxis=dict(
-                        tickmode='linear',
-                        dtick=1,  # Asegura que cada año esté etiquetado
-                        showgrid=False),
-                        yaxis=dict(showgrid=False),
-                        width=600)
-                st.plotly_chart(fig)
-            else:
-                st.warning(f"No data available for the selected filters for {variable}.")
-   
-    ####################################  PAGE 7  ######################################
+            variables = ['Healthcare', 'Leisure & Culture', 'Outdoors', 'Travel Connectivity']
+            for variable in variables:
+                if not filtered_df.empty:
+                    fig = px.bar(filtered_df,
+                                x='City',
+                                y=variable,
+                                color='City',
+                                title=f'{variable}')
+                    fig.update_layout(xaxis=dict(showgrid=False),
+                                    yaxis=dict(showgrid=False),
+                                    width=600)
+                    st.plotly_chart(fig)
+                else:
+                    st.warning(f"No data available for the selected filters for {variable}.")
+
+       
+    ####################################  PAGE 6  ######################################
 
 elif page == "Your best place":
     
@@ -1002,10 +985,8 @@ elif page == "Your best place":
                     &#9733; {city_name}</p>""",
                     unsafe_allow_html=True)
 
-        
 
-
-####################################  PAGE 9  ##########################################
+####################################  PAGE 7  ##########################################
 
 elif page == "Conclusions":
     
@@ -1013,21 +994,41 @@ elif page == "Conclusions":
     
     with col2:
 
-        st.markdown("<h1 style='text-align: center; font-size:45px;'>Key Takeaways</h1>", unsafe_allow_html=True)
-        st.write('')
-        st.write('')
-
-        st.subheader("🌍 Insightful Analysis")
-        st.write("Identifying cities that stand out for their quality of life.")
-    
-        st.subheader("🌍 Comparative Analysis")
-        st.write("Comparison on air quality and business freedom, highlighting those with higher desirability to live.")
-
-        st.subheader("🌍 Personalized Recommendations")
-        st.write("Users can discover cities align with their preferences, ensuring informed decision-making when considering relocation.")
+        st.markdown("<h1 style='text-align: center; font-size:45px;'>So...Which is the best city to live?</h1>", unsafe_allow_html=True)
         
-        st.subheader("🌍 Future Directions")
-        st.write("Future research should consider expanding the dataset to include more cities and diverse socio-economic factors.")
+        st.markdown("""<p style='font-size:30px; text-align: center; color:black; font-style:italic; margin:0;'>
+            <strong>It depends on you and your preferences! With this app we will help you to discover <strong>your best place:</strong></p>""", unsafe_allow_html=True)
 
-        st.subheader("🌍 Practical Applications")
-        st.write("These insights serve individuals seeking new living environments.")
+        st.write('')
+        st.write('')
+        st.write('') 
+        
+        st.markdown("""
+    <p style="font-size: 18px; line-height: 1.6;">
+    1. <strong>Explore and compare cities</strong>across diverse factors.
+    </p>
+    
+    <p style="font-size: 18px; line-height: 1.6;">
+    2. <strong>Top cities rankings</strong> in terms of safety, healthcare, education, and more.
+    </p>
+    
+    <p style="font-size: 18px; line-height: 1.6;">
+    3. <strong>Air Quality Comparison</strong> between countries and cities.
+    </p>
+    
+    <p style="font-size: 18px; line-height: 1.6;">
+    4. <strong>Business Freedom Impact</strong>between cities.
+    </p>
+    
+    <p style="font-size: 18px; line-height: 1.6;">
+    6. <strong>Personalized Recommendations</strong>: Receive personalized city recommendations tailored to individual preferences and lifestyle.
+    </p>
+    """, unsafe_allow_html=True)
+        
+        st.markdown("""
+                <p style='font-size:50px; color:black; text-align: center;'>
+                🌎
+                </p>
+                """,
+                unsafe_allow_html=True)
+        
