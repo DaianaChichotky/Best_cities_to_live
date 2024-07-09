@@ -1,10 +1,10 @@
 # 🌍 Project: Best cities to live
 
-💻 I am excited to share my final project for the data analysis bootcamp. 
+💻 I am excited to share my final project for the data analysis bootcamp at Upgrade-Hub. 
 
 ## Introduction
 
-In an increasingly interconnected world, choosing the best city to live involves a multifaceted decision-making process. Individuals and families consider various factors such as air quality, water availability, educational success, safety, cleanliness, recreational activities, and infrastructure when determining the most suitable place to settle. This project aims to analyze and compare these factors across different cities to identify which ones offer the highest quality of life.
+In an increasingly interconnected world, choosing the best city to live involves a multifaceted decision-making process. Individuals and families consider various factors such as air quality, educational success, safety, cleanliness, recreational activities, and infrastructure when determining the most suitable place to settle. This project aims to analyze and compare these factors across different cities to identify which ones offer the highest quality of life.
 
 ## Project Objectives
 

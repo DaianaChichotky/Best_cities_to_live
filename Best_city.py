@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import os
 import json
 from PIL import Image
+import requests
 
 # interactive maps
 import folium
@@ -149,17 +150,18 @@ if page == "Introduction":
             unsafe_allow_html=True)
 
     st.markdown("""
-            <p style='font-size:20px; color:black; text-align: justify;'>
-            These and more questions come to our minds when searching for the perfect place to live.
-            This analysis focuses on evaluating multiple key aspects that influence the decision to choose a place to live, using data from diverse global cities.
-            From safety to air quality, and from business freedom to cultural accessibility, each factor uniquely contributes to the perception of a city as a residential destination.
+            <p style='font-size:25px; color:black; text-align: justify;'>
+            In an increasingly interconnected world, choosing the best city to live involves a multifaceted decision-making process.
+            Individuals and families consider various factors such as air quality, educational success, safety, cleanliness,
+            and many others when determining the most suitable place to settle. This App aims to analyze and compare these factors across
+            different cities to identify which ones offer the highest quality of life.
             </p>
             """,
             unsafe_allow_html=True)
 
 # Random imagenes 
 
-    import requests
+    
 
 # Unsplash API access key
     access_key = '62QWPpkPYOpWWKoUjSAPIvLqe_myc3HddfM3EjlI724'
@@ -517,7 +519,7 @@ elif page == "Environment":
         st.write('')
             
         # Entrada de texto para que el usuario ingrese el nombre del país
-        city_name = st.text_input('Check the AQI for a specific city:', '')
+        country_name = st.text_input('Check the AQI for a specific country:', '')
 
         # Estilos CSS para el botón y el input
         st.markdown("""<style>.st-0 {
@@ -539,15 +541,15 @@ elif page == "Environment":
         # Botón para activar la búsqueda
         if st.button('Search'):
             # Convertir el nombre del país ingresado por el usuario a minúsculas para evitar problemas de mayúsculas/minúsculas
-            city_name_lower = city_name.strip().lower()
+            country_name_lower = country_name.strip().lower()
         
             # Buscar el valor de AQI correspondiente al país ingresado por el usuario
-            aqi_value = city_world_AQI.loc[city_world_AQI['City'].str.lower() == city_name_lower, 'AQI Value'].values
+            aqi_value = city_world_AQI.loc[city_world_AQI['Country'].str.lower() == country_name_lower, 'AQI Value'].values
         
             if len(aqi_value) > 0:
-                st.success(f"The AQI value for '{city_name.capitalize()}' is {aqi_value[0]}")
+                st.success(f"The AQI value for '{country_name.capitalize()}' is {aqi_value[0]}")
             else:
-                st.warning(f"Country '{city_name.capitalize()}' not found or no AQI value available.")
+                st.warning(f"Country '{country_name.capitalize()}' not found or no AQI value available.")
 
     st.write('----') 
 
@@ -657,18 +659,6 @@ elif page == "Economy":
 
         st.plotly_chart(fig)
 
-        # Relation between Startups and Economy
-        fig = px.scatter(df_final,
-                         x='Startups',
-                         y='Economy',
-                         color='City',
-                         size='Economy',
-                         hover_name='City',
-                         title='Startups Vs Economy',
-                         height=400,
-                         width=800)
-        st.plotly_chart(fig)
-
     with col2:
         
         # Business Freedom per city 
@@ -693,17 +683,17 @@ elif page == "Economy":
 
         st.plotly_chart(fig)
 
-        # Relation between Business Freedom and Economy
-        fig = px.scatter(df_final,
-                         x='Business Freedom',
-                         y='Economy',
-                         color='City',
-                         size='Economy',
-                         hover_name='City',
-                         title='Business Freedom Vs Economy',
-                         height=400,
-                         width=800)
-        st.plotly_chart(fig)
+# Relation between Startups and Business Freedom
+    fig = px.scatter(df_final,
+                        x='Startups',
+                        y='Business Freedom',
+                        color='City',
+                        size='Business Freedom',
+                        hover_name='City',
+                        title='Startups Vs Business Freedom',
+                        height=400,
+                        width=900)
+    st.plotly_chart(fig)
 
     st.markdown("""
                 <p style='font-size:40px; text-align: left; color:black; margin:0;'>
