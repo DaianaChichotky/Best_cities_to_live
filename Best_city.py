@@ -1025,6 +1025,8 @@ elif page == "Conclusions":
     </p>
     """, unsafe_allow_html=True)
         
+        st.markdown("""<h1 style='text-align: center; font-size:30px;'>Explore, compare, and decide where you'd like to live.<br>
+                    Your next adventure starts here!</h1>""", unsafe_allow_html=True)
         st.markdown("""
                 <p style='font-size:50px; color:black; text-align: center;'>
                 🌎
