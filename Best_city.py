@@ -505,7 +505,7 @@ elif page == "Environment":
     with col1:
         with open('HTML/AQI_worldmap.html', 'r', encoding='utf-8') as f:
             html_content = f.read()
-            st.components.v1.html(html_content, height=500, width=1000)
+            st.components.v1.html(html_content, height=500, width=800)
 
     with col3:
         st.image('img/AQI_std.png', width=400)
