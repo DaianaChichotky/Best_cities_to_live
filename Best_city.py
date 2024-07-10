@@ -846,7 +846,7 @@ elif page == "Rating":
         st.sidebar.write('-------')
 
         continent_options = ['All'] + list(city_df['Continent'].unique())
-        selected_continents = st.sidebar.multiselect("Select Continents", options=continent_options, default=['Europe'])
+        selected_continents = st.sidebar.multiselect("Select Continents", options=continent_options, default="All")
 
         # Se filtran los países según los continentes seleccionados o mostrar todos los países si se selecciona "All"
         if 'All' in selected_continents:
@@ -854,7 +854,7 @@ elif page == "Rating":
         else:
             country_options = ['All'] + list(city_df[city_df['Continent'].isin(selected_continents)]['Country'].unique())
 
-        selected_countries = st.sidebar.multiselect("Select Countries", options=country_options, default=['Germany'])
+        selected_countries = st.sidebar.multiselect("Select Countries", options=country_options, default="All")
 
         # Filtrar ciudades según países seleccionados
         if 'All' in selected_countries:
@@ -862,7 +862,7 @@ elif page == "Rating":
         else:
             city_options = ['All'] + list(city_df[city_df['Country'].isin(selected_countries)]['City'].unique())
 
-        selected_cities = st.sidebar.multiselect("Select Cities", options=city_options, default=['All'])
+        selected_cities = st.sidebar.multiselect("Select Cities", options=city_options, default="All")
 
 
         # Se filtra los datos según la selección del usuario
