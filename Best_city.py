@@ -1005,23 +1005,23 @@ elif page == "Conclusions":
         
         st.markdown("""
     <p style="font-size: 18px; line-height: 1.6;">
-    1. <strong>Explore and compare cities</strong> across diverse factors.
+    1. <strong>Top cities rankings</strong> in terms of safety, healthcare, education, and more.
+    </p>
+                    
+    <p style="font-size: 18px; line-height: 1.6;">
+    2. <strong>Air Quality Comparison</strong> between countries and cities.
+    </p>
+                    
+    <p style="font-size: 18px; line-height: 1.6;">
+    3. <strong>Business Freedom Impact</strong> between cities.
     </p>
     
     <p style="font-size: 18px; line-height: 1.6;">
-    2. <strong>Top cities rankings</strong> in terms of safety, healthcare, education, and more.
+    4. <strong>Explore and compare cities</strong> across diverse factors.
     </p>
-    
+
     <p style="font-size: 18px; line-height: 1.6;">
-    3. <strong>Air Quality Comparison</strong> between countries and cities.
-    </p>
-    
-    <p style="font-size: 18px; line-height: 1.6;">
-    4. <strong>Business Freedom Impact</strong> between cities.
-    </p>
-    
-    <p style="font-size: 18px; line-height: 1.6;">
-    6. <strong>Get the top 3 best cities</strong> according to your preferences and lifestyle.
+    5. <strong>Get the top 3 best cities</strong> according to your preferences and lifestyle.
     </p>
     """, unsafe_allow_html=True)
         
