@@ -846,7 +846,7 @@ elif page == "Rating":
         st.sidebar.write('-------')
 
         continent_options = ['All'] + list(city_df['Continent'].unique())
-        selected_continents = st.sidebar.multiselect("Select Continents", options=continent_options, default="All")
+        selected_continents = st.sidebar.multiselect("Select Continents", options=continent_options, default=["Europe"])
 
         # Se filtran los países según los continentes seleccionados o mostrar todos los países si se selecciona "All"
         if 'All' in selected_continents:
