@@ -130,16 +130,32 @@ if page == "Introduction":
 """, unsafe_allow_html=True)
     
     st.markdown("""
-            <p style='font-size:25px; text-align: center; color:green; font-style:italic; margin:0;'>
-            <strong>What impact does quality of life have on the choice of a city?</strong></p>
+            <p style='font-size:35px; text-align: center; color:green; font-style:italic; margin:0;'>
+            <strong>Have you ever wondered which is the best city to live in?</strong></p>
             
-            <p style='font-size:25px; text-align: center; color:green; font-style:italic; margin:0;'>
-            <strong>How does safety influence the perception of a place as home?</strong></p>
-            
-            <p style='font-size:25px; text-align: center; color:green; font-style:italic; margin:0;'>
-            <strong>What role does the economy play in our daily experience?</strong></p>
+            <p style='font-size:25px; text-align: center; color:black; font-style:italic; margin:0;'>
+            <strong>We know that this decision can be overwhelming, with so many options and factors to consider.</strong></p>
+                
+            <p style='font-size:25px; text-align: center; color:black; font-style:italic; margin:0;'>
+            <strong>That’s why we’ve created this app specifically designed to help you find your ideal city, whether for living or traveling.</strong></p>
+                
+            <p style='font-size:25px; text-align: center; color:black; font-style:italic; margin:0;'>
+            <strong>Our tool is designed to make your search easy and effective, providing you with all the information you need to
+            make an informed and personalized decision.</strong></p>
             """, 
             unsafe_allow_html=True)
+    
+    # st.markdown("""
+    #         <p style='font-size:25px; text-align: center; color:green; font-style:italic; margin:0;'>
+    #         <strong>What impact does quality of life have on the choice of a city?</strong></p>
+            
+    #         <p style='font-size:25px; text-align: center; color:green; font-style:italic; margin:0;'>
+    #         <strong>How does safety influence the perception of a place as home?</strong></p>
+            
+    #         <p style='font-size:25px; text-align: center; color:green; font-style:italic; margin:0;'>
+    #         <strong>What role does the economy play in our daily experience?</strong></p>
+    #         """, 
+    #         unsafe_allow_html=True)
 
     st.markdown("""
             <p style='font-size:50px; color:black; text-align: center;'>
@@ -148,15 +164,15 @@ if page == "Introduction":
             """,
             unsafe_allow_html=True)
 
-    st.markdown("""
-            <p style='font-size:25px; color:black; text-align: justify;'>
-            In an increasingly interconnected world, choosing the best city to live involves a multifaceted decision-making process.
-            Individuals and families consider various factors such as air quality, educational success, safety, cleanliness,
-            and many others when determining the most suitable place to settle. This App aims to analyze and compare these factors across
-            different cities to identify which ones offer the highest quality of life.
-            </p>
-            """,
-            unsafe_allow_html=True)
+    # st.markdown("""
+    #         <p style='font-size:25px; color:black; text-align: justify;'>
+    #         In an increasingly interconnected world, choosing the best city to live involves a multifaceted decision-making process.
+    #         Individuals and families consider various factors such as air quality, educational success, safety, cleanliness,
+    #         and many others when determining the most suitable place to settle. This App aims to analyze and compare these factors across
+    #         different cities to identify which ones offer the highest quality of life.
+    #         </p>
+    #         """,
+    #         unsafe_allow_html=True)
 
 # Random imagenes 
 
