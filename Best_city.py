@@ -93,7 +93,7 @@ st.markdown(
     f"""
     <div style="display: flex; justify-content: center; align-items: center; text-align: center; margin-bottom: 50px;">
         <img src="data:image/png;base64,{base64.b64encode(open(logo, 'rb').read()).decode()}" style="width: 100px; height: auto; margin-right: 20px;">
-        <h1 style='font-family: Lato; font-size: 45px;'>Analysis of the best cities to live</h1>
+        <h1 style='font-family: Lato; font-size: 50px;'>Analysis of the best cities to live</h1>
     </div>
     """,
     unsafe_allow_html=True
@@ -144,18 +144,6 @@ if page == "Introduction":
             make an informed and personalized decision.</strong></p>
             """, 
             unsafe_allow_html=True)
-    
-    # st.markdown("""
-    #         <p style='font-size:25px; text-align: center; color:green; font-style:italic; margin:0;'>
-    #         <strong>What impact does quality of life have on the choice of a city?</strong></p>
-            
-    #         <p style='font-size:25px; text-align: center; color:green; font-style:italic; margin:0;'>
-    #         <strong>How does safety influence the perception of a place as home?</strong></p>
-            
-    #         <p style='font-size:25px; text-align: center; color:green; font-style:italic; margin:0;'>
-    #         <strong>What role does the economy play in our daily experience?</strong></p>
-    #         """, 
-    #         unsafe_allow_html=True)
 
     st.markdown("""
             <p style='font-size:50px; color:black; text-align: center;'>
@@ -163,49 +151,49 @@ if page == "Introduction":
             </p>
             """,
             unsafe_allow_html=True)
+    
+    col1, col2, col3 = st.columns(3)
 
-    # st.markdown("""
-    #         <p style='font-size:25px; color:black; text-align: justify;'>
-    #         In an increasingly interconnected world, choosing the best city to live involves a multifaceted decision-making process.
-    #         Individuals and families consider various factors such as air quality, educational success, safety, cleanliness,
-    #         and many others when determining the most suitable place to settle. This App aims to analyze and compare these factors across
-    #         different cities to identify which ones offer the highest quality of life.
-    #         </p>
-    #         """,
-    #         unsafe_allow_html=True)
+    with col2:
 
-# Random imagenes 
+    # Random imagenes 
 
-# Unsplash API access key
-    access_key = '62QWPpkPYOpWWKoUjSAPIvLqe_myc3HddfM3EjlI724'
+    # Unsplash API access key
+        access_key = '62QWPpkPYOpWWKoUjSAPIvLqe_myc3HddfM3EjlI724'
 
-    def get_random_photo(country="city"):
-        try:
-            response = requests.get(f"https://api.unsplash.com/photos/random?query={country}+city&client_id={access_key}")
-        
-            # Check if the request was successful
-            if response.status_code == 200:
-                # Get JSON data from the response
-                data = response.json()
-                # Return the photo URL
-                return data["urls"]["regular"]
-            else:
-                st.error(f"Failed to fetch an image. Error: {response.text}")
-                return None
-        except requests.exceptions.RequestException as e:
-            st.error(f"Failed to fetch an image. Error: {str(e)}")
-            return None
-
-    def main():
-        st.markdown('#### Random Photos of Countries Around the World')
-
-        #Input for user to enter a city name
-        country = st.text_input("Enter the name of a country:", "")
-
-        # Botón para activar la búsqueda
+        def get_random_photo(country="city"):
+            try:
+                response = requests.get(f"https://api.unsplash.com/photos/random?query={country}+city&client_id={access_key}")
             
-        # Estilos CSS para el botón y el input
-        st.markdown("""
+                # Check if the request was successful
+                if response.status_code == 200:
+                    # Get JSON data from the response
+                    data = response.json()
+                    # Return the photo URL
+                    return data["urls"]["regular"]
+                else:
+                    st.error(f"Failed to fetch an image. Error: {response.text}")
+                    return None
+            except requests.exceptions.RequestException as e:
+                st.error(f"Failed to fetch an image. Error: {str(e)}")
+                return None
+
+        def main():
+            st.markdown("""
+                <p style='font-size:25px; text-align: center; color:green; margin:0;'>
+                <strong>Random Photos of Countries Around the World</strong></p>""", unsafe_allow_html=True)
+
+            st.markdown("""
+                <p style='font-size:20px; text-align: center; color:black; margin-bottom:0px;'>
+                Enter the name of a country:</p>""", unsafe_allow_html=True)
+
+            #Input for user to enter a city name
+            country = st.text_input("", "")
+
+            # Botón para activar la búsqueda
+                
+            # Estilos CSS para el botón y el input
+            st.markdown("""
     <style>
         .st-0 {
             height: 40px !important;
@@ -220,48 +208,38 @@ if page == "Introduction":
             color: white !important;
             font-size: 20px !important;
             font-weight: bold !important;
+            margin-top : -10px;
         }
         .stButton > button:hover {
             background-color: #449D44 !important;
         }
+        .stButton {
+            display: flex;
+            justify-content: center;
+        }
     </style>
     """, unsafe_allow_html=True)
+            
+
+            if st.button('Search'):
+                if country.strip() == "":
+                    st.warning("Please select a country")
+                else:
+                    #Create the variable photo_url and assign it the result of the get_random_photo() function
+                    photo_url = get_random_photo(country)
         
+                    #Check if a valid photo URL was obtained
+                    if photo_url:
 
-        if st.button('Search'):
-            if country.strip() == "":
-                st.warning("Please select a country")
-            else:
-                #Create the variable photo_url and assign it the result of the get_random_photo() function
-                photo_url = get_random_photo(country)
-    
-                #Check if a valid photo URL was obtained
-                if photo_url:
-
-                    col1, col2, col3 = st.columns(3)
-
-                    with col2:
-                            #Display image and caption
-                            st.image(photo_url, width=600, use_column_width=True)
-                            st.write(
-                                "<div style='text-align:right;color:red;font-size:14px'>Generated using Unsplash API</div>",
-                                unsafe_allow_html=True)
+                        col1, col2, col3 = st.columns(3)
                         
-                            # #Display "Generate another image" button
-                            # if st.button(f"Generate another random image of {country}"):
-                            #     #Get a new random photo
-                            #     photo_url = get_random_photo(country)
-                            
-                            #     # Check if a valid photo URL was obtained
-                            #     if photo_url:
-                            #         #Replace the image with the new one
-                            #         st.image(photo_url, width=600, use_column_width=True)
-                            #         st.write(
-                            #             "<div style='text-align:right;color:red;font-size:14px'>Generated using Unsplash API</div>",
-                            #             unsafe_allow_html=True)
+                        st.image(photo_url, width=600, use_column_width=True)
+                        st.write(
+                                "<div style='text-align:right;color:red;font-size:14px'>Generated using Unsplash API</div>",
+                        unsafe_allow_html=True)
 
-    if __name__ == "__main__":
-                        main()
+        if __name__ == "__main__":
+                            main()
    
 
 ####################################  PAGE 2  ######################################
