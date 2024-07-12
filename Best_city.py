@@ -543,7 +543,7 @@ elif page == "Top10":
             st.title('Happiness evolution')
 
             country_options = ['All'] + list(countries_df['Country'].unique())
-            selected_countries = st.multiselect("Select Countries", options=country_options, default=['Argentina'])
+            selected_countries = st.multiselect("🌍 Select one or more countries", options=country_options, default=['Argentina'])
 
             # Filtrar los datos según la selección del usuario
             if 'All' in selected_countries:
