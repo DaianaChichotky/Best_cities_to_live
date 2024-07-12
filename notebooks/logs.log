@@ -50,3 +50,31 @@ X does not have valid feature names, but StandardScaler was fitted with feature 
 X does not have valid feature names, but NearestNeighbors was fitted with feature names
 
 
+2024-07-12 18:30:23,406:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-07-12 18:30:23,406:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-07-12 18:30:23,406:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-07-12 18:30:23,406:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2024-07-12 18:32:04,636:WARNING:c:\Users\Dai\Desktop\Bootcamp_Upgrade_Hub\Data_Bootcamp\venv\Lib\site-packages\sklearn\base.py:493: UserWarning:
+
+X does not have valid feature names, but StandardScaler was fitted with feature names
+
+
+2024-07-12 18:32:04,646:WARNING:c:\Users\Dai\Desktop\Bootcamp_Upgrade_Hub\Data_Bootcamp\venv\Lib\site-packages\sklearn\base.py:493: UserWarning:
+
+X does not have valid feature names, but NearestNeighbors was fitted with feature names
+
+
+2024-07-12 18:46:16,075:WARNING:c:\Users\Dai\Desktop\Bootcamp_Upgrade_Hub\Data_Bootcamp\venv\Lib\site-packages\sklearn\base.py:493: UserWarning:
+
+X does not have valid feature names, but StandardScaler was fitted with feature names
+
+
+2024-07-12 18:46:16,078:WARNING:c:\Users\Dai\Desktop\Bootcamp_Upgrade_Hub\Data_Bootcamp\venv\Lib\site-packages\sklearn\base.py:493: UserWarning:
+
+X does not have valid feature names, but NearestNeighbors was fitted with feature names
+
+
