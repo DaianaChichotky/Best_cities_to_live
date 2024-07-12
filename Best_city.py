@@ -973,13 +973,15 @@ elif page == "Your best place":
         else:
             st.success(f"You selected: {', '.join(selected_variables)}")
 
-        # Normalizar los datos seleccionados
+        # Normalizo los datos
         scaler = StandardScaler()
         normalized_data = scaler.fit_transform(city_df[selected_variables])
         normalized_df = pd.DataFrame(normalized_data, columns=selected_variables)
         normalized_df['City'] = city_df['City']
+        normalized_df['lat'] = city_df['lat'] # lo agrego para poner en el mapa
+        normalized_df['lng'] = city_df['lng'] # lo agrego para poner en el mapa
 
-        # Entrenar el modelo KNN
+        # Entreno el modelo KNN
         knn = NearestNeighbors(n_neighbors=3)
         knn.fit(normalized_df[selected_variables])
 
@@ -989,18 +991,44 @@ elif page == "Your best place":
         # Encontrar los vecinos más cercanos
         distances, indices = knn.kneighbors([user_input])
 
-        # Mostrar los resultados
+        # Resultados
         st.markdown("""
                 <p style='font-size:30px; text-align: left; color:black; margin:0;'>
                 The best cities to live according to your preferences are:</p>""",
                 unsafe_allow_html=True)
         
+        selected_cities = []
         for idx in indices[0]:
-            city_name = normalized_df.iloc[idx]['City']
+            city_info = {
+                'City': normalized_df.iloc[idx]['City'],
+                'lat': normalized_df.iloc[idx]['lat'],
+                'lng': normalized_df.iloc[idx]['lng']
+            }
+            selected_cities.append(city_info)
             st.markdown(f"""
                     <p style='font-size:20px; text-align: left; color:black; margin:0;'>
-                    &#9733; {city_name}</p>""",
+                    &#9733; {city_info['City']}</p>""",
                     unsafe_allow_html=True)
+        
+        st.write('')
+        st.write('')
+
+        # Creo un mapa con folium
+        from streamlit_folium import folium_static
+
+        map_center = [normalized_df['lat'].mean(), normalized_df['lng'].mean()]
+        m = folium.Map(location=map_center, zoom_start=1.5)
+
+        # Marcadores para las ciudades seleccionadas
+        for city in selected_cities:
+            folium.Marker(
+                location=[city['lat'], city['lng']],
+                popup=city['City'],
+                icon=folium.Icon(color='blue', icon='info-sign')
+            ).add_to(m)
+
+        # Mostrar el mapa en Streamlit
+        folium_static(m)
 
 
 ####################################  PAGE 7  ##########################################
