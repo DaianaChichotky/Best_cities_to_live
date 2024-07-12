@@ -551,7 +551,7 @@ elif page == "Top10":
             else:
                 filtered_df = countries_df[countries_df['Country'].isin(selected_countries)]
 
-            col1, col2 = st.columns(2)
+            col1, col2, col3 = st.columns([3,1,3])
 
             with col1:
 
@@ -571,19 +571,19 @@ elif page == "Top10":
                             
                 st.plotly_chart(fig)
 
-            with col2:
+            with col3:
 
                 st.write('')
                 st.write('')
                 
                 st.markdown("""
-            <p style='font-size:25px; color:black; text-align: justify;'>
+            <p style='font-size:20px; color:black; text-align: justify;'>
             <strong>Life Ladder score:</strong><br>
             A measure of subjective well-being, reflecting individuals' overall satisfaction with life. <br>""",
             unsafe_allow_html=True)
                 
                 st.markdown("""
-            <p style='font-size:25px; color:black; text-align: justify;'>
+            <p style='font-size:20px; color:black; text-align: justify;'>
             The <strong>best possible life</strong> being a 10, and the <strong>worst possible life</strong> being a 0.
             </p>
             """,unsafe_allow_html=True)
