@@ -1029,7 +1029,6 @@ elif page == "Your best place":
                 icon=folium.Icon(color='blue', icon='info-sign')
             ).add_to(m)
 
-        # Mostrar el mapa en Streamlit
         folium_static(m)
 
 
