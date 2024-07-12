@@ -878,7 +878,7 @@ elif page == "Rating":
         else:
             country_options = ['All'] + list(city_df[city_df['Continent'].isin(selected_continents)]['Country'].unique())
 
-        selected_countries = st.sidebar.multiselect("Select Countries", options=country_options, default="All")
+        selected_countries = st.sidebar.multiselect("Select Countries", options=country_options, default="Spain")
 
         # Filtrar ciudades según países seleccionados
         if 'All' in selected_countries:
