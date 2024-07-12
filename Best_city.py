@@ -578,11 +578,15 @@ elif page == "Top10":
                 
                 st.markdown("""
             <p style='font-size:25px; color:black; text-align: justify;'>
-            <strong>Life Ladder score:</strong> The happiness score for each country. <br>
+            <strong>Life Ladder score:</strong><br>
+            A measure of subjective well-being, reflecting individuals' overall satisfaction with life. <br>""",
+            unsafe_allow_html=True)
+                
+                st.markdown("""
+            <p style='font-size:25px; color:black; text-align: justify;'>
             The <strong>best possible life</strong> being a 10, and the <strong>worst possible life</strong> being a 0.
             </p>
-            """,
-            unsafe_allow_html=True)
+            """,unsafe_allow_html=True)
                 
 
 
