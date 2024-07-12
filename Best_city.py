@@ -980,6 +980,7 @@ elif page == "Your best place":
         normalized_df['City'] = city_df['City']
         normalized_df['lat'] = city_df['lat'] # lo agrego para poner en el mapa
         normalized_df['lng'] = city_df['lng'] # lo agrego para poner en el mapa
+        normalized_df['Country'] = city_df['Country'] # lo agrego para poner en el mapa
 
         # Entreno el modelo KNN
         knn = NearestNeighbors(n_neighbors=3)
@@ -1002,7 +1003,8 @@ elif page == "Your best place":
             city_info = {
                 'City': normalized_df.iloc[idx]['City'],
                 'lat': normalized_df.iloc[idx]['lat'],
-                'lng': normalized_df.iloc[idx]['lng']
+                'lng': normalized_df.iloc[idx]['lng'],
+                'Country': normalized_df.iloc[idx]['Country']
             }
             selected_cities.append(city_info)
             st.markdown(f"""
@@ -1017,13 +1019,13 @@ elif page == "Your best place":
         from streamlit_folium import folium_static
 
         map_center = [normalized_df['lat'].mean(), normalized_df['lng'].mean()]
-        m = folium.Map(location=map_center, zoom_start=1.5)
+        m = folium.Map(location=map_center, zoom_start=1.2)
 
         # Marcadores para las ciudades seleccionadas
         for city in selected_cities:
             folium.Marker(
                 location=[city['lat'], city['lng']],
-                popup=city['City'],
+                popup=f"{city['City']}, {city['Country']}",
                 icon=folium.Icon(color='blue', icon='info-sign')
             ).add_to(m)
 
