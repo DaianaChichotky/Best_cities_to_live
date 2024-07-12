@@ -313,7 +313,27 @@ elif page == "Top10":
                     st.success(f"The city '{city_name}' is part of the evaluated cities \U00002714")
                     city_data = city_df[city_df['City_lower'] == city_name.strip().lower()]
                     st.dataframe(city_data.drop(columns=['City_lower', 'lat', 'lng', 'AQI Value', 'Internet Access', 'Venture Capital', 'Taxation']).reset_index(drop=True))
-                    st.write('**The range is from 0 to 10, with the larger numbers indicating higher desirability to live.**')
+                    
+                    st.markdown('<u><i>Definition:</i></u>', unsafe_allow_html=True)
+                    st.write('**Range from 0 to 10, with the larger numbers indicating higher desirability to live.**')
+                    st.markdown("""
+                                - `Housing`: Rating about affordability of houses in the city.
+                                - `Cost of Living`: The expense of living in the city.
+                                - `Startups`: The presence or number of startup companies in the city.
+                                - `Travel Connectivity`: The ease of travel to and from the city, including transportation infrastructure and connectivity.
+                                - `Commute`: The average time and ease of commuting within the city.
+                                - `Business Freedom`: The level of freedom to conduct business activities in the city.
+                                - `Safety`: The safety and security level in the city.
+                                - `Healthcare`: The quality and availability of healthcare services in the city.
+                                - `Education`: The quality and availability of educational institutions and services in the city.
+                                - `Environmental Quality`: The quality of the environment in the city, including pollution levels and green spaces.
+                                - `Economy`: The economic strength and stability of the city, including job opportunities and economic growth.
+                                - `Leisure & Culture`: The availability and quality of leisure and cultural activities in the city.
+                                - `Tolerance`: The level of tolerance and acceptance of diversity in the city.
+                                - `Outdoors`: The availability and quality of outdoor activities and natural environments in and around the city.
+                                - `AQI Category`: The category or classification of the air quality based on the AQI value, such as Good, Moderate, Unhealthy, etc.
+                                """, unsafe_allow_html=True)
+
                 elif city_name:
                     st.warning(f"The city '{city_name}' is NOT part of the analysis.")
 
